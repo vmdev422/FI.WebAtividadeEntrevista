@@ -1,0 +1,12 @@
+CREATE PROC FI_SP_VerificaCliente
+(
+    @CPF VARCHAR(14),
+    @ID BIGINT = NULL
+)
+AS
+BEGIN
+    SELECT 1
+    FROM CLIENTES WITH(NOLOCK)
+    WHERE CPF = @CPF
+      AND (@ID IS NULL OR ID <> @ID)
+END
